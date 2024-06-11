@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> E-Okul </title>
+	
+	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+</head>
+
+<body>
+
+ 
+        <h2> Hesap Bilgileri</h2>
+      
+		<script>
+	var firebaseConfig = { 
+apiKey: "AIzaSyC2qbC0HS1icS3qlOcd2-fR7n6SPpdo3bM", 
+authDomain: "ogrencitakip-d2af3.firebaseapp.com", 
+projectId: "ogrencitakip-d2af3", 
+storageBucket: "ogrencitakip-d2af3.appspot.com", 
+messagingSenderId: "880504598202", 
+appId: "1:880504598202:android:548ddfc8e43c7b78a2dc83",  
+}; 
+
+firebase.initializeApp(firebaseConfig); 
+  
+const auth = firebase.auth(); 
+// SignIN function 
+function signIn() { 
+  var email = document.getElementById("email"); 
+  var password = document.getElementById("password"); 
+  const promise = auth.signInWithEmailAndPassword( 
+            email.value, password.value); 
+		
+  
+} 
+function DeleteUser() {
+    const user = firebase.auth().currentUser;
+ 
+    user
+        .delete()
+        .then(() => {
+            // User deleted.
+            console.log("Kullanıcı Hesabı Silindi");
+        })
+        .catch((error) => {
+            // An error occurred
+            // ...
+        });
+}
+
+	</script>
+            <label for="userId"><span> Email</span></label>
+			   <br /> 
+            <input type="text" name="username" id="email">
+			   <br /> 
+            <label for="password"><span> Şifre </span></label>
+			   <br /> 
+            <input type="password" name="username" id="password">
+			   <br /> <br />   
+            <button onclick="signIn()">Giriş Yap</button>
+			   <br />     
+            <br /> 
+            <button onclick="DeleteUser()">Hesabı Sil</button>
+			   <br />     
+			  
+       
+
+       
+
+</body>
+</html>
